@@ -19,6 +19,7 @@ class CreateDiscoversTable extends Migration
             $table->string("texteGauche");
             $table->string("texteDroite");
             $table->string("vidéo");
+            $table->string("titre");
 
 
         });

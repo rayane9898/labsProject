@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Header;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HeaderController extends Controller
 {
@@ -11,10 +12,11 @@ class HeaderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexview()
+    public function index()
     {
-        //
-        return view("backoffice.headerEdit");
+        $headers = Header::find(1);
+        
+        return view("backoffice.headerEdit", compact("headers"));
 
     }
 
@@ -68,9 +70,18 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Header $header)
     {
         //
+        if ($request->hasFile('logo')) {
+            $logo=Storage::disk('public')->put('', $request->file('logo'));
+            $header->logo=$logo;
+        }
+
+        $header->texte=$request->input('texte');
+        // $logo = Logo::find($id);
+        $header->save();
+        return redirect()->route("index");
     }
 
     /**

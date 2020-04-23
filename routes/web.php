@@ -28,3 +28,4 @@ Route::get('/home', function() {
 })->name('home')->middleware('auth');
 
 Route::get("/header", "HeaderController@indexview")->name("header.edit");
+Route::resource("header", "HeaderController");

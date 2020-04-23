@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Header;
 use App\Welcome;
+use App\Discover;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -14,7 +15,10 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('welcome.welcome');
+        $header = Header::all();
+        $discover = Discover::all();
+        return view('welcome.welcome', compact("header", "discover"));
+        
     }
 
     /**

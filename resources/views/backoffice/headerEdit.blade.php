@@ -8,12 +8,12 @@
   {{-- logo --}}
   <div class="container">
     <div class="form-register">
-  <form name="" action="" method="POST" enctype="multipart/form-data" >
+    <form name="" action="{{route("header.update",$headers)}}" method="POST" enctype="multipart/form-data" >
     @csrf
+    @method("PUT")
     <div class="form-group d-flex">
       <label class="mr-3 mt-2" for="">LOGO:</label> 
-      <input class="form-control w-25 mr-3" required="required" type="file" name="img"></label>
-      <input type="submit" value="Update" class="btn btn-primary mb-2">
+      <input class="form-control w-25 mr-3" required="required" type="file" name="logo"></label>
       {{-- logo --}}
 
 
@@ -21,7 +21,7 @@
     </div> 
     <div class="form-group d-flex">
       <label class="mr-3 mt-2" for="">Phrase:</label>
-      <input class="form-control w-25 mr-3" value="" name="" id="" >
+      <input class="form-control w-25 mr-3" value="" name="texte" id="" >
       <input type="submit" value="Update" class="btn btn-primary mb-2">
     </div>
     {{-- phrase --}}
